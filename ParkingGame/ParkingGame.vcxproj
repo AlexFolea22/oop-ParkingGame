@@ -135,13 +135,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Car.cpp" />
+    <ClCompile Include="car.cpp" />
+    <ClCompile Include="collider.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="actor.cpp" />
+    <ClCompile Include="map_boundary.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Car.h" />
-    <ClInclude Include="Actor.h" />
+    <ClInclude Include="car.h" />
+    <ClInclude Include="actor.h" />
+    <ClInclude Include="collider.h" />
+    <ClInclude Include="map_boundary.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

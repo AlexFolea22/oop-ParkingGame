@@ -1,54 +1,62 @@
-﻿#include "Car.h"
+﻿#include "car.h"
 #include <SFML/Window/Keyboard.hpp>
 
 Car::Car(const std::string& textureName, float x, float y, int sizeX, int sizeY, float speed, const std::string& type)
-    : Actor(textureName, x, y, sizeX, sizeY, type), speed(speed) {
-    sprite.setOrigin(sf::Vector2f(sizeX / 2.0f, sizeY / 2.0f));
+    : Actor(textureName, x, y, sizeX, sizeY, type), m_speed(speed),
+    m_body(sf::Vector2f(static_cast<float>(sizeX), static_cast<float>(sizeY))),
+    m_collider(m_body)
+{
+    m_rectangle.setOrigin(sf::Vector2f(sizeX / 2.0f, sizeY / 2.0f));
 }
 
-void Car::update(float deltaTime) {
-
-}
 
 void Car::handleInput() {
+    float rotation = m_rectangle.getRotation().asRadians();
+    sf::Vector2f forward(std::sin(rotation), -std::cos(rotation));
+    sf::Vector2f right(forward.y, -forward.x); 
 
-    float rotation = sprite.getRotation().asRadians();
-    sf::Vector2f direction(std::sin(rotation), -std::cos(rotation));
+    bool accelerating = false;
+    float dt = 1.0f / 60.0f;
 
-    bool isAccelerating = false;
+
+    float speed = std::sqrt(m_velocity.x * m_velocity.x + m_velocity.y * m_velocity.y);
+    if (speed > 0.1f) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::A)) {
+            m_rectangle.rotate(sf::degrees(-m_turnSpeed * dt * (speed / m_maxSpeed)));
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::D)) {
+            m_rectangle.rotate(sf::degrees(m_turnSpeed * dt * (speed / m_maxSpeed)));
+        }
+    }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::W)) {
-        velocity += direction * acceleration;
-        isAccelerating = true;
+        m_velocity += forward * m_acceleration * dt;
+        accelerating = true;
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::S)) {
-        velocity.x -= 0.75*direction.x * acceleration;
-        velocity.y -= 0.75*direction.y * acceleration;
-        isAccelerating = true;
+        m_velocity -= forward * (m_acceleration * 0.1f) * dt;
+        accelerating = true;
     }
 
+    if (!accelerating) {
+        m_velocity *= (1.0f - m_drag * dt);
 
-	if (abs(velocity.x)>0.05f||abs(velocity.y)>0.05f) {
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::A)) {
-            sprite.rotate(sf::degrees(-2));
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::D)) {
-            sprite.rotate(sf::degrees(2));
-        }
-	}
-
-    // Apply friction if not accelerating
-    if (!isAccelerating) {
-        velocity.x *= (1.f - 0.4f * friction);
-        velocity.y *= (1.f - 0.4f * friction);
+        //lateral friction (drift reduction)
+        float sideVel = m_velocity.x * right.x + m_velocity.y * right.y;
+        m_velocity -= right * sideVel * m_lateralFriction * dt;
     }
 
     //max speed
-    float magnitude = std::sqrt(velocity.x * velocity.x + velocity.y * velocity.y);
-    if (magnitude > maxSpeed) {
-        velocity = (velocity / magnitude) * maxSpeed;
+    float magnitude = std::sqrt(m_velocity.x * m_velocity.x + m_velocity.y * m_velocity.y);
+    if (magnitude > m_maxSpeed) {
+        m_velocity = (m_velocity / magnitude) * m_maxSpeed;
     }
 
-    sprite.move(velocity);
+    m_rectangle.move(m_velocity);
+    m_body.setPosition(m_rectangle.getPosition());
+}
+
+Collider& Car::getCollider() {
+    return m_collider;
 }

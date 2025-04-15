@@ -1,3 +1,4 @@
+// actor.h
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
@@ -7,17 +8,22 @@
 
 class Actor {
 protected:
-	sf::Texture texture;
-	sf::Sprite sprite;
-	std::string type;
+    sf::Texture m_texture;
+    sf::RectangleShape m_rectangle;
+    std::string m_type;
 
 public:
-	Actor(const std::string& textureName, float x, float y, int sizeX, int sizeY, const std::string& type);
-	~Actor() {};
+    Actor(const std::string& textureName, float x, float y, int sizeX, int sizeY, const std::string& type);
+    Actor();
+    virtual ~Actor() {};
 
-	sf::Texture getTexture();
-	sf::Sprite getSprite();
-	std::string getType();
+    sf::Texture& getTexture();
+    const sf::RectangleShape& getRectangle() const;
+    const std::string& getType() const;
+
+   /* virtual void draw(sf::RenderWindow& window);*/
+    virtual void update(float deltaTime) {} 
+    virtual void handleInput() {}        
 };
 
 #endif //ACTOR_H
