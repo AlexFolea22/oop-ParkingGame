@@ -19,6 +19,8 @@ public:
 
     sf::Texture& getTexture();
     const sf::RectangleShape& getRectangle() const;
+    sf::RectangleShape& getRectangle();
+
     const std::string& getType() const;
 
    /* virtual void draw(sf::RenderWindow& window);*/

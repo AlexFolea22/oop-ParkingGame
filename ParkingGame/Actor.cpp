@@ -23,6 +23,11 @@ sf::Texture& Actor::getTexture() {
 const sf::RectangleShape& Actor::getRectangle() const {
     return m_rectangle;
 }
+ // Add a non-const overload
+sf::RectangleShape& Actor::getRectangle() {
+    return m_rectangle;
+}
+
 
 const std::string& Actor::getType() const {
     return m_type;
