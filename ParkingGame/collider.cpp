@@ -14,11 +14,11 @@ sf::RectangleShape Collider::getShape() const {
 std::array<sf::Vector2f, 4> Collider::getCorners() const {
     const sf::Transform& transform = m_rectangle.getTransform();
     sf::Vector2f size = m_rectangle.getSize();
-    sf::Vector2f origin = m_rectangle.getOrigin();
-    sf::Vector2f localTopLeft(-origin.x, -origin.y);
-    sf::Vector2f localTopRight(size.x - origin.x, -origin.y);
-    sf::Vector2f localBottomRight(size.x - origin.x, size.y - origin.y);
-    sf::Vector2f localBottomLeft(-origin.x, size.y - origin.y);
+
+    sf::Vector2f localTopLeft(0.0f, 0.0f);
+    sf::Vector2f localTopRight(size.x, 0.0f);
+    sf::Vector2f localBottomRight(size.x, size.y);
+    sf::Vector2f localBottomLeft(0.0f, size.y);
 
     std::array<sf::Vector2f, 4> corners;
     corners[0] = transform.transformPoint(localTopLeft);
@@ -182,7 +182,7 @@ void Collider::drawCollider(sf::RenderWindow& window) const {
     for (const auto& corner : corners) {
         sf::CircleShape cornerPoint(2.0f);
         cornerPoint.setFillColor(sf::Color::Red);
-        cornerPoint.setPosition({ corner.x - 2.0f, corner.y - 2.0f });
+        cornerPoint.setPosition({corner.x - 2.0f, corner.y - 2.0f});
         window.draw(cornerPoint);
     }
 }
