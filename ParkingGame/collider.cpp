@@ -3,7 +3,7 @@
 #include <cmath>
 #include <limits>
 
-Collider::Collider(const sf::RectangleShape& shape) : Actor("", shape.getPosition().x, shape.getPosition().y, static_cast<int>(shape.getSize().x), static_cast<int>(shape.getSize().y), "collider") {
+Collider::Collider(const sf::RectangleShape& shape) : Actor("Sprites/floorTile.png", shape.getPosition().x, shape.getPosition().y, static_cast<int>(shape.getSize().x), static_cast<int>(shape.getSize().y), "collider") {
     m_rectangle = shape;
 }
 
@@ -169,7 +169,6 @@ void Collider::drawCollider(sf::RenderWindow& window) const {
     // Create a copy of the rectangle for visualization
     sf::RectangleShape debugShape = m_rectangle;
 
-    // Set visual properties for debugging
     debugShape.setFillColor(sf::Color::Transparent);
     debugShape.setOutlineColor(sf::Color::Green);
     debugShape.setOutlineThickness(1.0f);
@@ -177,7 +176,7 @@ void Collider::drawCollider(sf::RenderWindow& window) const {
     // Draw the outline
     window.draw(debugShape);
 
-    // Optionally, draw the corners for more clarity
+    // Draw the corners
     std::array<sf::Vector2f, 4> corners = getCorners();
     for (const auto& corner : corners) {
         sf::CircleShape cornerPoint(2.0f);

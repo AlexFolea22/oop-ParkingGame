@@ -13,7 +13,6 @@ Car::Car(const std::string& textureName, float x, float y, int sizeX, int sizeY,
     m_body.setPosition(m_rectangle.getPosition());
     m_body.setRotation(m_rectangle.getRotation());
 
-    // Ensure the body has the same texture as the rectangle if applicable
     if (m_rectangle.getTexture() != nullptr) {
         m_body.setTexture(m_rectangle.getTexture());
         m_body.setTextureRect(m_rectangle.getTextureRect());
@@ -55,24 +54,21 @@ void Car::handleInput() {
         m_velocity = (m_velocity / magnitude) * m_maxSpeed;
     }
     m_rectangle.move(m_velocity);
-    // Update body and collider to match rectangle's position and rotation
     updateCollider();
 }
 
 void Car::updateCollider() {
-    // Ensure the body exactly matches the rectangle
     m_body.setSize(m_rectangle.getSize());
     m_body.setOrigin(m_rectangle.getOrigin());
     m_body.setPosition(m_rectangle.getPosition());
     m_body.setRotation(m_rectangle.getRotation());
     m_body.setScale(m_rectangle.getScale());
 
-    // Update the collider with the updated body
     m_collider = Collider(m_body);
 }
 
 Collider& Car::getCollider() {
-    updateCollider(); // Ensure collider is up to date
+    updateCollider();
     return m_collider;
 }
 

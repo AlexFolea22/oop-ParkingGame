@@ -33,6 +33,9 @@ const std::string& Actor::getType() const {
     return m_type;
 }
 
+
+
+
 //void Actor::draw(sf::RenderWindow& window) {
 //    window.draw(rectangle);
 //}

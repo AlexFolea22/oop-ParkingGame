@@ -16,10 +16,11 @@ public:
     Actor(const std::string& textureName, float x, float y, int sizeX, int sizeY, const std::string& type);
     Actor();
     virtual ~Actor() {};
-
     sf::Texture& getTexture();
     const sf::RectangleShape& getRectangle() const;
     sf::RectangleShape& getRectangle();
+
+
 
     const std::string& getType() const;
 

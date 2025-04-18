@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="asphalt.cpp" />
     <ClCompile Include="car.cpp" />
     <ClCompile Include="collider.cpp" />
     <ClCompile Include="main.cpp" />
@@ -142,6 +143,7 @@
     <ClCompile Include="map_boundary.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="asphalt.h" />
     <ClInclude Include="car.h" />
     <ClInclude Include="actor.h" />
     <ClInclude Include="collider.h" />

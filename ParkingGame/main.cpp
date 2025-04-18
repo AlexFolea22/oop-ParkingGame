@@ -12,28 +12,29 @@ int main()
     sf::RenderWindow window = sf::RenderWindow(sf::VideoMode({ width, height }), "Parking Game");
     window.setFramerateLimit(60);
 
-    // Create the obstacle cube
-    sf::RectangleShape cubShape({ 100.0f, 100.0f });
-    cubShape.setPosition({ width / 2.0f, height / 4.0f });
-    cubShape.setFillColor(sf::Color::Red); // Make it visible
-    cubShape.setOrigin({ 50.0f, 50.0f }); // Set origin to center for consistent collision
+    Actor floor("Sprites/Asphalt.png",0.0f, 0.0f, 1920, 1080, "floor");
+
+    sf::RectangleShape cubShape({ 450.0f, 100.0f });
+    cubShape.setPosition({ 110.0f, 1035.0f });
+    cubShape.setFillColor(sf::Color::Transparent);
+    cubShape.setOrigin({ 50.0f, 50.0f }); 
     Collider cub(cubShape);
 
-    // Create the car
-    Car car("Sprites/Car.png", width / 2.0f, height / 2.0f, 64, 128, 1.0f, "player");
+    MapBoundary map(1920.0f, 1080.0f, 1.0f);
 
-    // Previous positions to reset to after collision
+
+    Car car("Sprites/Car.png", width / 6.6f, height / 1.2f, 64, 128, 1.0f, "player");
+
+
     sf::Vector2f previousPosition;
     float previousRotation;
 
     // Game loop
     sf::Clock clock;
     while (window.isOpen()) {
-        // Store previous state before movement
         previousPosition = car.getRectangle().getPosition();
         previousRotation = car.getRectangle().getRotation().asDegrees();
 
-        // Handle events
         while (const std::optional event = window.pollEvent()) {
             if (event->is<sf::Event::Closed>()) {
                 window.close();
@@ -45,32 +46,29 @@ int main()
             }
         }
 
-        // Update car position based on input
         car.handleInput();
 
-        // Check for collision
-        if (cub.checkCollision(car.getCollider())) {
-            std::cout << "Collision detected!" << std::endl;
+        //collision
+        if (cub.checkCollision(car.getCollider())||map.checkCollisions(car.getCollider())) {
 
-            // Restore previous position
             car.getRectangle().setPosition(previousPosition);
             car.getRectangle().setRotation(sf::degrees(previousRotation));
 
-            // Reset velocity to prevent continued movement
-            car.setVelocity({ 0.0f, 0.0f });
+            car.getRectangle().setPosition({ width / 6.6f, height / 1.2f });
+            car.getRectangle().setRotation(sf::degrees(0));
 
-            // Update the collider to match the restored position
+            car.setVelocity({ 0.0f, 0.0f });
             car.updateCollider();
         }
+       map.checkCollisions(car.getCollider());
 
         // Render
         window.clear();
+        window.draw(floor.getRectangle());
         window.draw(car.getRectangle());
-        window.draw(cubShape); // Draw the obstacle
+        window.draw(cubShape);
+        map.draw(window);
 
-        // Draw collider visualizations for debugging
-        car.drawCollider(window);
-        cub.drawCollider(window);
 
         window.display();
     }

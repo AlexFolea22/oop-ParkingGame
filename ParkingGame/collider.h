@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <array>
-#include "actor.h" // Assuming this contains the Actor base class
+#include "actor.h" 
 
 class Collider : public Actor {
 public:
