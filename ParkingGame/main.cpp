@@ -20,7 +20,7 @@ int main()
     cubShape.setOrigin({ 50.0f, 50.0f }); 
     Collider cub(cubShape);
 
-    MapBoundary map(1920.0f, 1080.0f, 1.0f);
+    MapBoundary map(1920.0f, 1080.0f, 38.0f);
 
 
     Car car("Sprites/Car.png", width / 6.6f, height / 1.2f, 64, 128, 1.0f, "player");
