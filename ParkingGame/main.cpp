@@ -4,6 +4,7 @@
 #include "map_boundary.h"
 #include "collider.h"
 #include "actor.h"
+#include "parked_cars.h"
 
 int main()
 {
@@ -21,6 +22,7 @@ int main()
     Collider cub(cubShape);
 
     MapBoundary map(1920.0f, 1080.0f, 38.0f);
+    ParkedCars cars;
 
 
     Car car("Sprites/Car.png", width / 6.6f, height / 1.2f, 64, 128, 1.0f, "player");
@@ -49,13 +51,13 @@ int main()
         car.handleInput();
 
         //collision
-        if (cub.checkCollision(car.getCollider())||map.checkCollisions(car.getCollider())) {
+        if (cub.checkCollision(car.getCollider())||map.checkCollisions(car.getCollider())||cars.checkCollisions(car.getCollider())) {
 
             car.getRectangle().setPosition(previousPosition);
             car.getRectangle().setRotation(sf::degrees(previousRotation));
 
-            car.getRectangle().setPosition({ width / 6.6f, height / 1.2f });
-            car.getRectangle().setRotation(sf::degrees(0));
+            /*car.getRectangle().setPosition({ width / 6.6f, height / 1.2f });
+            car.getRectangle().setRotation(sf::degrees(0));*/
 
             car.setVelocity({ 0.0f, 0.0f });
             car.updateCollider();
@@ -68,6 +70,7 @@ int main()
         window.draw(car.getRectangle());
         window.draw(cubShape);
         map.draw(window);
+        cars.draw(window);
 
 
         window.display();

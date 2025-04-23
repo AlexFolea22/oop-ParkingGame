@@ -141,6 +141,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="actor.cpp" />
     <ClCompile Include="map_boundary.cpp" />
+    <ClCompile Include="parked_cars.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="asphalt.h" />
@@ -148,6 +149,7 @@
     <ClInclude Include="actor.h" />
     <ClInclude Include="collider.h" />
     <ClInclude Include="map_boundary.h" />
+    <ClInclude Include="parked_cars.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

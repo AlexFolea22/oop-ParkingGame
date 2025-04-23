@@ -1,6 +1,6 @@
 #pragma once
 
-#ifndef MAP_BOUNDARY__H
+#ifndef MAP_BOUNDARY_H
 #define MAP_BOUNDARY_H
 
 
