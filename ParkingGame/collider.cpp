@@ -161,7 +161,7 @@ bool Collider::checkCollision(const Collider& other) const {
     }
 
     // If we get here, no separating axis was found, so the rectangles are colliding
-    std::cout << "Collision detected using SAT\n";
+    /*std::cout << "Collision detected using SAT\n";*/
     return true;
 }
 

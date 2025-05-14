@@ -1,4 +1,3 @@
-// actor.cpp
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
@@ -36,6 +35,6 @@ const std::string& Actor::getType() const {
 
 
 
-//void Actor::draw(sf::RenderWindow& window) {
-//    window.draw(rectangle);
-//}
+void Actor::draw(sf::RenderWindow& window) {
+    window.draw(m_rectangle);
+}

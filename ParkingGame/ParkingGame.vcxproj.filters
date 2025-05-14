@@ -36,6 +36,9 @@
     <ClCompile Include="parked_cars.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="parking_spot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="car.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parked_cars.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parking_spot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

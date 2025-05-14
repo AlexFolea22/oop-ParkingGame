@@ -26,6 +26,7 @@ void Car::handleInput() {
     bool accelerating = false;
     float dt = 1.0f / 60.0f;
     float speed = std::sqrt(m_velocity.x * m_velocity.x + m_velocity.y * m_velocity.y);
+
     if (speed > 0.1f) {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::A)) {
             m_rectangle.rotate(sf::degrees(-m_turnSpeed * dt * (speed / m_maxSpeed)));

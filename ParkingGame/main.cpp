@@ -5,6 +5,7 @@
 #include "collider.h"
 #include "actor.h"
 #include "parked_cars.h"
+#include "parking_spot.h"
 
 int main()
 {
@@ -14,6 +15,8 @@ int main()
     window.setFramerateLimit(60);
 
     Actor floor("Sprites/Asphalt.png",0.0f, 0.0f, 1920, 1080, "floor");
+
+    ParkingSpot spot(1774, 563);
 
     sf::RectangleShape cubShape({ 450.0f, 100.0f });
     cubShape.setPosition({ 110.0f, 1035.0f });
@@ -56,21 +59,37 @@ int main()
             car.getRectangle().setPosition(previousPosition);
             car.getRectangle().setRotation(sf::degrees(previousRotation));
 
-            /*car.getRectangle().setPosition({ width / 6.6f, height / 1.2f });
-            car.getRectangle().setRotation(sf::degrees(0));*/
+
+            //RESET
+
+            car.getRectangle().setPosition({ width / 6.6f, height / 1.2f });
+            car.getRectangle().setRotation(sf::degrees(0));
 
             car.setVelocity({ 0.0f, 0.0f });
             car.updateCollider();
         }
        map.checkCollisions(car.getCollider());
 
+       //parkingcheck
+
+       if (spot.IsParked(car))
+       {
+           std::cout << "AI PARCAT BOSS";
+           spot.getRectangle().setFillColor(sf::Color (255, 0, 0, 100));
+        }
+       else {
+           spot.getRectangle().setFillColor(sf::Color::Transparent);
+       }
+
+      
         // Render
         window.clear();
-        window.draw(floor.getRectangle());
+        floor.draw(window);
         window.draw(car.getRectangle());
         window.draw(cubShape);
         map.draw(window);
         cars.draw(window);
+        spot.draw(window);
 
 
         window.display();
@@ -78,3 +97,6 @@ int main()
 
     return 0;
 }
+
+
+///game manager rendering, 
