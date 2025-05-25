@@ -19,14 +19,15 @@ private:
 	bool m_shouldClose;
 	Actor m_floor;
 	ParkingSpot m_spot;
-	/*sf::RectangleShape m_cubShape;*/
-	/*Collider m_cub;*/
 	MapBoundary m_map;
 	ParkedCars m_cars;
 	Car m_car;
 
 	sf::Vector2f m_previousPosition;
 	float m_previousRotation;
+
+	static sf::Clock gameTimerClock;
+	static bool timerHasStarted;
 
 	void initializeGameObjects();
 	void checkCollisions();
@@ -44,6 +45,11 @@ public:
 	Actor& getFloor();
 	sf::RectangleShape& getCubShape();
 	bool shouldClose() const;
+
+	static void startGameTimer();
+	static sf::Time getTime();
+	static bool isTimeRunning();
+
 };
 
 
