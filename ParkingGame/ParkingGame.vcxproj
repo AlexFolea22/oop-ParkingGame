@@ -135,23 +135,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="asphalt.cpp" />
     <ClCompile Include="car.cpp" />
     <ClCompile Include="collider.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="game_manager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="actor.cpp" />
     <ClCompile Include="map_boundary.cpp" />
     <ClCompile Include="parked_cars.cpp" />
     <ClCompile Include="parking_spot.cpp" />
+    <ClCompile Include="rendering_manager..cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="asphalt.h" />
     <ClInclude Include="car.h" />
     <ClInclude Include="actor.h" />
     <ClInclude Include="collider.h" />
+    <ClInclude Include="game.h" />
+    <ClInclude Include="game_manager.h" />
     <ClInclude Include="map_boundary.h" />
     <ClInclude Include="parked_cars.h" />
     <ClInclude Include="parking_spot.h" />
+    <ClInclude Include="rendering_manager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

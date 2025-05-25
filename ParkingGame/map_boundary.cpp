@@ -54,6 +54,11 @@ MapBoundary::MapBoundary(float mapWidth, float mapHeight, float thickness) {
     hut.setFillColor(sf::Color::Transparent);
     m_walls.emplace_back(hut);
 
+    sf::RectangleShape barrier(sf::Vector2f(250.0f, 20.0f));
+    barrier.setPosition({ 130.0f, 985.0f });
+    barrier.setFillColor(sf::Color::Transparent);
+    m_walls.emplace_back(barrier);
+
 }
 
 bool MapBoundary::checkCollisions(const Collider& other) const {

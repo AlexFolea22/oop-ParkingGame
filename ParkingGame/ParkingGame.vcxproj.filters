@@ -30,13 +30,19 @@
     <ClCompile Include="map_boundary.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="asphalt.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="parked_cars.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="parking_spot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering_manager..cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,13 +59,19 @@
     <ClInclude Include="map_boundary.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="asphalt.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="parked_cars.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parking_spot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
