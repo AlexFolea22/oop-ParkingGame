@@ -87,23 +87,32 @@ bool GameManager::shouldClose() const {
 void GameManager::startGameTimer() {
 	gameTimerClock.restart();
 	timerHasStarted = true;
-	std::cout << "GameManager: Timer pornit/resetat!" << std::endl; // Opțional, pentru debug
 }
 
-sf::Time GameManager::getTime() { // Folosim numele declarat în .h
+sf::Time GameManager::getTime() { 
 	if (timerHasStarted) {
 		return gameTimerClock.getElapsedTime();
 	}
-	return sf::Time::Zero; // Returnează zero dacă timer-ul nu a pornit
+	return sf::Time::Zero; 
 }
 
-bool GameManager::isTimeRunning() { // Folosim numele declarat în .h
+bool GameManager::isTimeRunning() { 
 	return timerHasStarted;
 }
 
-Car& GameManager::getCar() { return m_car; }
-MapBoundary& GameManager::getMapBoundary() { return m_map; }
-ParkedCars& GameManager::getParkedCars() { return m_cars; }
-ParkingSpot& GameManager::getParkingSpot() { return m_spot; }
-Actor& GameManager::getFloor() { return m_floor; }
+Car& GameManager::getCar() { 
+	return m_car; 
+}
+MapBoundary& GameManager::getMapBoundary() { 
+	return m_map; 
+}
+ParkedCars& GameManager::getParkedCars() { 
+	return m_cars; 
+}
+ParkingSpot& GameManager::getParkingSpot() { 
+	return m_spot;
+}
+Actor& GameManager::getFloor() { 
+	return m_floor;
+}
 
