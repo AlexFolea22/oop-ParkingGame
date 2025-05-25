@@ -29,30 +29,30 @@ void Car::handleInput() {
 
     if (speed > 0.1f) {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::A)) {
-            m_rectangle.rotate(sf::degrees(-m_turnSpeed * dt * (speed / m_maxSpeed)));
+            m_rectangle.rotate(sf::degrees(-m_physics.turnSpeed * dt * (speed / m_physics.maxSpeed)));
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::D)) {
-            m_rectangle.rotate(sf::degrees(m_turnSpeed * dt * (speed / m_maxSpeed)));
+            m_rectangle.rotate(sf::degrees(m_physics.turnSpeed * dt * (speed / m_physics.maxSpeed)));
         }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::W)) {
-        m_velocity += forward * m_acceleration * dt;
+        m_velocity += forward * m_physics.acceleration * dt;
         accelerating = true;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::S)) {
-        m_velocity -= forward * (m_acceleration * 0.1f) * dt;
+        m_velocity -= forward * (m_physics.acceleration * 0.1f) * dt;
         accelerating = true;
     }
     if (!accelerating) {
-        m_velocity *= (1.0f - m_drag * dt);
+        m_velocity *= (1.0f - m_physics.drag * dt);
         //lateral friction (drift reduction)
         float sideVel = m_velocity.x * right.x + m_velocity.y * right.y;
-        m_velocity -= right * sideVel * m_lateralFriction * dt;
+        m_velocity -= right * sideVel * m_physics.lateralFriction * dt;
     }
     //max speed
     float magnitude = std::sqrt(m_velocity.x * m_velocity.x + m_velocity.y * m_velocity.y);
-    if (magnitude > m_maxSpeed) {
-        m_velocity = (m_velocity / magnitude) * m_maxSpeed;
+    if (magnitude > m_physics.maxSpeed) {
+        m_velocity = (m_velocity / magnitude) * m_physics.maxSpeed;
     }
     m_rectangle.move(m_velocity);
     updateCollider();
