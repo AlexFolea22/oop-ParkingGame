@@ -154,6 +154,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="game_manager.h" />
     <ClInclude Include="human.h" />
+    <ClInclude Include="is_drawable.h" />
     <ClInclude Include="map_boundary.h" />
     <ClInclude Include="parked_cars.h" />
     <ClInclude Include="parking_spot.h" />

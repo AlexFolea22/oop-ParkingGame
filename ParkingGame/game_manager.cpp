@@ -47,7 +47,7 @@ void GameManager::initializeGameObjects() {
 	std::uniform_real_distribution<float> distX(padding, m_gameMapDimensions.x - padding);
 	std::uniform_real_distribution<float> distY(padding, m_gameMapDimensions.y - padding);
 
-	sf::Vector2f humanDefaultSize(20.f, 30.f);
+	sf::Vector2f humanDefaultSize(30.f, 40.f);
 	float humanDefaultSpeed = 60.f;
 
 	m_humans.clear();

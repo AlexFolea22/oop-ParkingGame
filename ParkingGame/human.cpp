@@ -27,9 +27,8 @@ Human::Human(sf::Vector2f position,
     std::random_device rd;
     m_rng.seed(rd());
 
-    this->getRectangle().setTexture(nullptr);
     this->getRectangle().setSize(size); 
-    this->getRectangle().setFillColor(sf::Color(255, 222, 169));
+    /*this->getRectangle().setFillColor(sf::Color(255, 222, 169));*/
     
     this->getRectangle().setOrigin({ 0,0 }); 
     this->getRectangle().setPosition(position);

@@ -344,7 +344,7 @@ bool ParkedCars::checkCollisions(const Collider& other) const {
     return false;
 }
 
-void ParkedCars::draw(sf::RenderWindow& window) {
+void ParkedCars::draw(sf::RenderWindow& window)const {
     for (const auto& carCollider : m_cars) {
         window.draw(carCollider.getShape());
     }

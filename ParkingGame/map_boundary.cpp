@@ -70,7 +70,7 @@ bool MapBoundary::checkCollisions(const Collider& other) const {
     return false;
 }
 
-void MapBoundary::draw(sf::RenderWindow& window) {
+void MapBoundary::draw(sf::RenderWindow& window)const  {
     for (const auto& wallCollider : m_walls) {
         window.draw(wallCollider.getShape()); 
     }

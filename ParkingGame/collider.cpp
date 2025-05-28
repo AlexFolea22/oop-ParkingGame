@@ -3,7 +3,7 @@
 #include <cmath>
 #include <limits>
 
-Collider::Collider(const sf::RectangleShape& shape) : Actor("Sprites/floorTile.png", shape.getPosition().x, shape.getPosition().y, static_cast<int>(shape.getSize().x), static_cast<int>(shape.getSize().y), "collider") {
+Collider::Collider(const sf::RectangleShape& shape) : Actor("Sprites/human.png", shape.getPosition().x, shape.getPosition().y, static_cast<int>(shape.getSize().x), static_cast<int>(shape.getSize().y), "collider") {
     m_rectangle = shape;
 }
 

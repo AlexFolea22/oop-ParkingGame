@@ -2,11 +2,12 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
+#include "is_drawable.h"
 
 #ifndef ACTOR_H
 #define ACTOR_H
 
-class Actor {
+class Actor : public IsDrawable {
 protected:
     sf::Texture m_texture;
     std::string m_type;
@@ -24,7 +25,7 @@ public:
     const std::string& getType() const;
 
     virtual void draw(sf::RenderWindow& window);
-    virtual void draw(sf::RenderWindow& window) const;
+    virtual void draw(sf::RenderWindow& window) const override;
     virtual void update(float deltaTime) {} 
     virtual void handleInput() {}        
 };

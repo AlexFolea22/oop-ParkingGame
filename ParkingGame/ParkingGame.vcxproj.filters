@@ -80,5 +80,8 @@
     <ClInclude Include="human.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="is_drawable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
