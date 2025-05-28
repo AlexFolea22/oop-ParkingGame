@@ -158,6 +158,7 @@
     <ClInclude Include="map_boundary.h" />
     <ClInclude Include="parked_cars.h" />
     <ClInclude Include="parking_spot.h" />
+    <ClInclude Include="physics_config.h" />
     <ClInclude Include="rendering_manager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

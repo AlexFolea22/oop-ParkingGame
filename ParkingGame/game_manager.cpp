@@ -10,6 +10,7 @@ std::ostream& operator<<(std::ostream& os, const sf::Time& time) {
 }
 
 
+
 GameManager::GameManager(int width, int height) :
 	m_width(width),
 	m_height(height),
@@ -137,6 +138,15 @@ void GameManager::resetCar() {
 
 	m_car.setVelocity({ 0.0f, 0.0f });
 	m_car.updateCollider();
+
+	/*sf::Time elapsedTime = GameManager::getTime();
+	int seconds = elapsedTime.asSeconds();
+	if(seconds%2==1){ 
+		m_car.boostPhysics(-1); 
+	}
+	else {
+		m_car.boostPhysics(1);
+	}*/
 }
 
 int GameManager::m_checkpark = 0;

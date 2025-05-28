@@ -3,21 +3,15 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "collider.h"
+#include "physics_config.h"
 
 #ifndef CAR_H
 #define CAR_H
+
+
 class Car : public Actor {
 private:
     float m_speed;
-
-    struct PhysicsConfig {
-        float friction = 0.08f;
-        float acceleration = 50.0f;
-        float maxSpeed = 6.0f;
-        float turnSpeed = 180.0f;
-        float drag = 2.0f;
-        float lateralFriction = 0.2f;
-    };
     PhysicsConfig m_physics;
     sf::Vector2f m_velocity = { 0.f, 0.f };
     Collider m_collider;
@@ -31,5 +25,6 @@ public:
     Collider& getCollider();
     void updateCollider();
     void drawCollider(sf::RenderWindow& window);
+    void boostPhysics(int amount);
 };
 #endif // CAR_H

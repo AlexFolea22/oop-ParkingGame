@@ -2,6 +2,7 @@
 #include <SFML/Window/Keyboard.hpp>
 #include <cmath>
 
+
 Car::Car(const std::string& textureName, float x, float y, int sizeX, int sizeY, float speed, const std::string& type)
     : Actor(textureName, x, y, sizeX, sizeY, type),
     m_speed(speed),
@@ -87,4 +88,8 @@ void Car::setSpeed(const float& speed) {
 
 void Car::drawCollider(sf::RenderWindow& window) {
     m_collider.drawCollider(window);
+}
+
+void Car::boostPhysics(int amount) {
+    m_physics = m_physics + amount;
 }
