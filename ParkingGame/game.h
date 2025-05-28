@@ -12,9 +12,10 @@ private:
     sf::RenderWindow m_window;
     GameManager m_gameManager;
     RenderingManager m_renderingManager;
+    sf::Clock m_deltaClock;
 
     void processEvents();
-    void updateGame();
+    void updateGame(float dt);
     void renderGame();
 
 public:

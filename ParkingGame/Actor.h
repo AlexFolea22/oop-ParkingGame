@@ -24,6 +24,7 @@ public:
     const std::string& getType() const;
 
     virtual void draw(sf::RenderWindow& window);
+    virtual void draw(sf::RenderWindow& window) const;
     virtual void update(float deltaTime) {} 
     virtual void handleInput() {}        
 };

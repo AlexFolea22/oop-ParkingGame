@@ -12,5 +12,11 @@ void RenderingManager::render(sf::RenderWindow& window, GameManager& gameManager
 	gameManager.getParkedCars().draw(window);
 	gameManager.getParkingSpot().draw(window);
 
+	for (const Human* human_ptr : gameManager.getHumans()) {
+		if (human_ptr) {
+			human_ptr->draw(window);
+		}
+	}
+
 	window.display();
 }

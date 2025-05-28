@@ -105,10 +105,8 @@
 #include "Game.h"
 
 int main() {
-    unsigned int width = 1920;
-    unsigned int height = 1080;
-
-    Game game(width, height, "Parking Game");
+ 
+    Game game(1920, 1080, "Parking Game");
     game.run();
 
     return 0;

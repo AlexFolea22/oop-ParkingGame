@@ -139,6 +139,7 @@
     <ClCompile Include="collider.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="game_manager.cpp" />
+    <ClCompile Include="human.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="actor.cpp" />
     <ClCompile Include="map_boundary.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="collider.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="game_manager.h" />
+    <ClInclude Include="human.h" />
     <ClInclude Include="map_boundary.h" />
     <ClInclude Include="parked_cars.h" />
     <ClInclude Include="parking_spot.h" />

@@ -1,6 +1,7 @@
 ﻿#include "game.h"
 #include <optional> 
 
+
 Game::Game(unsigned int width, unsigned int height, const std::string& windowName) :
     m_window(sf::VideoMode({ width, height }), windowName),
     m_gameManager(width, height)                          
@@ -8,8 +9,16 @@ Game::Game(unsigned int width, unsigned int height, const std::string& windowNam
     m_window.setFramerateLimit(60);
 }
 
+
 void Game::run() {
+
+    m_deltaClock.restart();
+
     while (m_window.isOpen()) {
+
+        sf::Time frameTime = m_deltaClock.restart();
+        float dt = frameTime.asSeconds();
+
         processEvents();
 
         if (m_gameManager.shouldClose()) {
@@ -20,7 +29,7 @@ void Game::run() {
             break;
         }
 
-        updateGame();
+        updateGame(dt);
         renderGame();
     }
 }
@@ -34,8 +43,8 @@ void Game::processEvents() {
     }
 }
 
-void Game::updateGame() {
-    m_gameManager.update();
+void Game::updateGame(float dt) {
+    m_gameManager.update(dt);
 }
 
 void Game::renderGame() {

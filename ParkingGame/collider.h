@@ -9,6 +9,7 @@ class Collider : public Actor {
 public:
     // Constructor
     Collider(const sf::RectangleShape& shape);
+    virtual ~Collider() {};
 
     // Getters
     sf::RectangleShape getShape() const;
