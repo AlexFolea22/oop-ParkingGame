@@ -6,7 +6,6 @@
 
 class IsDrawable {
 public:
-	virtual ~IsDrawable() {};
 	virtual void draw(sf::RenderWindow& window) const = 0;
 };
 #endif //IS_DRAWABLE_H

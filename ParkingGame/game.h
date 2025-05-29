@@ -14,9 +14,9 @@ private:
     RenderingManager m_renderingManager;
     sf::Clock m_deltaClock;
 
-    void processEvents();
-    void updateGame(float dt);
-    void renderGame();
+    void _processEvents();
+    void _updateGame(float dt);
+    void _renderGame();
 
 public:
     Game(unsigned int width, unsigned int height, const std::string& windowName);

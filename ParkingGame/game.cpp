@@ -19,7 +19,7 @@ void Game::run() {
         sf::Time frameTime = m_deltaClock.restart();
         float dt = frameTime.asSeconds();
 
-        processEvents();
+        _processEvents();
 
         if (m_gameManager.shouldClose()) {
             m_window.close();
@@ -29,12 +29,12 @@ void Game::run() {
             break;
         }
 
-        updateGame(dt);
-        renderGame();
+        _updateGame(dt);
+        _renderGame();
     }
 }
 
-void Game::processEvents() {
+void Game::_processEvents() {
     while (const std::optional event = m_window.pollEvent()) {
         if (!m_gameManager.handleEvent(*event)) {
             m_window.close();
@@ -43,10 +43,10 @@ void Game::processEvents() {
     }
 }
 
-void Game::updateGame(float dt) {
+void Game::_updateGame(float dt) {
     m_gameManager.update(dt);
 }
 
-void Game::renderGame() {
+void Game::_renderGame() {
     m_renderingManager.render(m_window, m_gameManager);
 }
