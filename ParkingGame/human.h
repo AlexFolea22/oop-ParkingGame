@@ -17,7 +17,7 @@ namespace sf {
 class Human : public Collider {
 
 private:
-    void changeDirection();
+    void _changeDirection();
 
     sf::Vector2f m_velocity;
     float m_movementSpeed;
@@ -36,7 +36,7 @@ public:
         const sf::Vector2f& mapBounds,
         float movementSpeed = 50.f,
         sf::Vector2f size = sf::Vector2f(50.f, 50.f));
-    virtual ~Human() {};
+    virtual ~Human();
     void update(float dt);
 
 };

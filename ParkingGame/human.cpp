@@ -33,12 +33,12 @@ Human::Human(sf::Vector2f position,
     this->getRectangle().setOrigin({ 0,0 }); 
     this->getRectangle().setPosition(position);
 
-    changeDirection();
+    _changeDirection();
     m_timeUntilNextDirectionChange = sf::seconds(m_timeDistribution(m_rng));
     m_directionChangeClock.restart();
 }
 
-void Human::changeDirection() {
+void Human::_changeDirection() {
     float angle = m_angleDistribution(m_rng);
     m_velocity.x = std::cos(angle) * m_movementSpeed;
     m_velocity.y = std::sin(angle) * m_movementSpeed;
@@ -46,7 +46,7 @@ void Human::changeDirection() {
 
 void Human::update(float dt) {
     if (m_directionChangeClock.getElapsedTime() >= m_timeUntilNextDirectionChange) {
-        changeDirection();
+        _changeDirection();
         m_timeUntilNextDirectionChange = sf::seconds(m_timeDistribution(m_rng));
         m_directionChangeClock.restart();
     }
@@ -87,9 +87,13 @@ void Human::update(float dt) {
     }
 
     if (bounced) {
-        changeDirection();
+        _changeDirection();
         m_directionChangeClock.restart();
     }
 
     this->getRectangle().setPosition(currentPosition); 
+}
+
+Human::~Human() {
+    std::cout << "You hit an innocent father"<<'\n';
 }
