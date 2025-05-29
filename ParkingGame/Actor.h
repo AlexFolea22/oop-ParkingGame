@@ -11,6 +11,7 @@ class Actor : public IsDrawable {
 protected:
     sf::Texture m_texture;
     std::string m_type;
+    sf::RectangleShape m_rectangle;
     
 public:
     Actor(const std::string& textureName, float x, float y, int sizeX, int sizeY, const std::string& type);
@@ -19,7 +20,6 @@ public:
     sf::Texture& getTexture();
     const sf::RectangleShape& getRectangle() const;
     sf::RectangleShape& getRectangle();
-    sf::RectangleShape m_rectangle;
 
 
     const std::string& getType() const;

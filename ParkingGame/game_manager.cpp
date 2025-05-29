@@ -42,8 +42,9 @@ void GameManager::initializeGameObjects() {
 
 	std::uniform_int_distribution<> numHumansDist(5, 10);
 	int numberOfHumans = numHumansDist(gen);
-	std::cout << "GameManager: Spawning" << numberOfHumans;
+	std::cout << "GameManager: Spawning " << numberOfHumans<<'\n';
 
+	
 	float padding = 5.0f;
 	std::uniform_real_distribution<float> distX(padding, m_gameMapDimensions.x - padding);
 	std::uniform_real_distribution<float> distY(padding, m_gameMapDimensions.y - padding);
@@ -132,7 +133,7 @@ void GameManager::resetCar() {
 	m_car.getRectangle().setPosition(m_previousPosition);
 	m_car.getRectangle().setRotation(sf::degrees(m_previousRotation));
 
-	//RESETEAZA MASINA
+	//Reset the car to its spawning point
 	/*m_car.getRectangle().setPosition({ m_width / 6.6f, m_height / 1.2f });
 	m_car.getRectangle().setRotation(sf::degrees(0));*/
 
